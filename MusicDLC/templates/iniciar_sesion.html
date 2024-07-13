@@ -1,0 +1,78 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+    <main>
+        <div class="contenedor__todo">
+            <div class="caja__trasera">
+                <div class="caja__trasera-login">
+                    <h3>¿Ya tienes una cuenta?</h3>
+                    <p>Inicia sesión para entrar en la página</p>
+                    <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+                </div>
+                <div class="caja__trasera-register">
+                    <h3>¿Aún no tienes una cuenta?</h3>
+                    <p>Registrate ahora para poder iniciar sesión</p>
+                    <button id="btn__registrarse">Registrarse</button>
+                </div>
+            </div>
+            <div class="contenedor__login-register">
+                <form method="POST" class="formulario__login">
+                    <h2>Iniciar Sesión</h2>
+                    {% csrf_token %}
+                    {% if messages %}
+                        {% for message in messages %} 
+                            <h3 class="mensaje__Error">{{ message }}</h3>
+                        {% endfor %}
+                    {% endif %}
+                    
+                    {% if errorLogin %}
+                        <h3 class="mensaje__Error">{{ errorLogin }}</h3>
+                    {% endif %}
+                    <div>
+                        <label>Nombre de Usuario</label>
+                        {{ formLogin.username }}
+                    </div>
+                    <div>
+                        <label>Contraseña</label>
+                        {{ formLogin.password }}
+                    </div>
+                    <button name="login" type="submit">Entrar</button>
+                </form>
+                <form method="POST" class="formulario__register">
+                    <h2>Registrarse</h2>
+                    {% csrf_token %}
+                    
+                    {% if errorRegister %}
+                        <h3 class="mensaje__Error">{{ errorRegister }}</h3>
+                        {% for field, errors in registerErrors.items %}
+                            <div>
+                                <h4>{{ field }}</h4>
+                                <ul>
+                                    {% for error in errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                    <br>
+                                </ul>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    <div>
+                        <label>Nombre de Usuario</label>
+                        {{ formRegister.username }}
+                    </div>
+                    <div>
+                        <label>Contraseña</label>
+                        {{ formRegister.password1 }}
+                    </div>
+                    <div>
+                        <label>Confirmar Contraseña</label>
+                        {{ formRegister.password2 }}
+                    </div>
+                    <button name="register" type="submit">Registrarse</button>
+                </form>
+            </div>            
+        </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,129 @@
+/* Variables */
+:root {
+    --color1: #E3E2E0;
+    --color2: #B100CD;
+    --color3: #8901CF;
+    --color4: #B77ECA;
+    --color5: #000000;
+    --color6: #ffffff;
+    --color7: #FF0000;
+}    
+
+/* Estilo para el contenedor del carrito */
+.cart-items-container {
+    position: absolute;
+    top: 100px;
+    right: 10px;
+    width: 540px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 10px 20px;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+    overflow: auto;
+    display: block;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Mostrar el contenedor del carrito */
+.cart-items-container.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Estilo para las celdas de encabezado de la tabla */
+#cart-items-table tr th {
+    padding-right: 30px;
+    border-bottom: 1px solid #3f3f3f;
+}
+
+#cart-items-table tr td {
+    color: var(--color5);
+}
+
+/* Estilo para los botones de acción */
+.cart-items-container .button1,
+.cart-items-container .button2 {
+    background-color: var(--color2);
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 6px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* Estilo para los botones al pasar el mouse */
+.cart-items-container .button1:hover,
+.cart-items-container .button2:hover {
+    background-color: var(--color3);
+}
+
+/* Estilo para la entrada de cantidad */
+.item-quantity {
+    border: none;
+    background-color: transparent;
+    width: auto;
+    padding: 0;
+    font-size: inherit;
+    text-align: center;
+    outline: none;
+}
+
+/* Estilo para el botón de eliminar */
+.delete-button {
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 18px;
+    color: #000 !important;
+    cursor: pointer;
+    align-items: center;
+}
+
+/* Estilo para el botón de cerrar el carrito */
+.cart-close-button {
+    position: absolute !important;
+    top: 5px !important;
+    right: 5px !important;
+    background-color: transparent !important;
+    border: none !important;
+    font-size: 16px !important;
+    cursor: pointer !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
+}
+
+@media (max-width: 400px) {
+    /* Estilos para pantallas pequeñas */
+    .cart-items-container {
+        width: 84%;
+        top: 110px;
+        right: 5%;
+        margin: 0;
+        padding: 10px;
+    }
+
+    #cart-items-table tr th {
+        padding-right: 10px;
+    }
+
+    .item-quantity {
+        width: 40px;
+    }
+
+    .cart-close-button {
+        top: 2px !important;
+        right: 2px !important;
+        font-size: 14px !important;
+    }
+}

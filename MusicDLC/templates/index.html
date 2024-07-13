@@ -1,0 +1,168 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="container__content">
+            {% if request.user.is_authenticated and request.user.is_superuser %}
+                <h1>Bienvenido Administrador {{ request.user.username }}</h1>
+            {% elif request.user.is_authenticated %}
+                <h1>Bienvenido {{ request.user.username }}</h1>
+            {% else %}
+                <h1>Bienvenido a MusicDLC</h1>
+            {% endif %}
+            <p>Donde la prioridad es la calidad en el sonido de tu instrumento</p>
+            <a href="#sectioninfo">Ver más Información</a>
+        </div>
+    </div>
+
+    <div class="section__information" id="sectioninfo">
+        <div class="section__information-img">
+            <img src="../static/Img/logo_musicdlc.png" alt="Imagen Sección">
+        </div>
+        <div class="section__information-info">
+            <h2>¿Quienes Somos?</h2>
+            <p>Somos una empresa 100% mexicana, dedicada a la comercialización de instrumentos musicales, equipos de audio, componentes y accesorios electrónicos, con 4 sucursales en el estado de Nuevo Léon.</p>
+            <p>Fundada en 2006, dedicada originalmente a la reparación de componentes electrónicos y venta de refacciones electrónicas, cambió su modelo de negocios a finales de 2008 con la venta de instrumentos musicales y equipos de audio, convirtiéndose posteriormente en una de las empresas más importantes en Nuevo Léon para el abastecimiento de instrumentos musicales, equipos de audio y electrónica de consumo de calidad.</p>
+            <p>Actualmente ofrece un catálogo con más de 13,000 productos y un servicio personalizado que nos ha hecho merecedores de la confianza de nuestros socios comerciales por casi dos décadas.</p>
+        </div>
+    </div>
+
+    <div class="section__instrumentos">
+        <div class="section__instrumentos-container">
+            <div class="section__instrumentos-title">
+                <h2>Lo más nuevo en instrumentos musicales!</h2>
+            </div>
+            <div class="section__instrumentos-cards">
+                {% for producto in productos %}
+                    <div class="section__instrumentos-cards-card" data-aos="fade-down" data-aos-duration="1000">
+                        <img src="{{ producto.imagen.url }}" alt="Imagen No disponible del Producto" class="productos__img">
+                        <p>{{ producto.marca }}</p>
+                        <h2 class="productos__titulo">{{ producto.nombre }}</h2>
+                        <p>${{ producto.precio|floatformat:2 }}MXN</p>
+                        <button class="añadir_al_carrito" data-product-id="{{ producto.id }}" data-product-price="{{ producto.precio }}">Añadir al Carrito</button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="section__servicios">
+        <h2>¿Por qué elegirnos?</h2>
+        <div class="section__servicios-container">
+            <div class="section__servicios-card">
+                <i class="fa-solid fa-headphones iconos"></i>
+                <h3>Atención Personalizada</h3>
+                <p>Tenemos especializtas dispuestos a asesorar tus dudas.</p>
+            </div>
+            <div class="section__servicios-card">
+                <i class="fa-solid fa-truck-fast iconos"></i>
+                <h3>Envíos Rápidos y Seguros</h3>
+                <p>Contamos con excelentes servicios de entrega, rápidos y seguros.</p>
+            </div>
+            <div class="section__servicios-card">
+                <i class="fa-solid fa-credit-card iconos"></i>
+                <h3>Pago Seguro</h3>
+                <p>Opciones fáciles y seguras de pago.</p>
+            </div>
+            <div class="section__servicios-card">
+                <i class="fa-regular fa-circle-check iconos"></i>
+                <h3>Control de Calidad</h3>
+                <p>Garantizamos la calidad en entrega tanto en los productos que ofrecemos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section__testimoniales" id="testimoniales" data-aos="fade-up" data-aos-duration="1000">
+        <h2>Comentarios</h2>
+        <div class="section__testimoniales-container">
+            <div class="section__testimoniales-card">
+                <div class="estrellas">
+                    <i class="fas fa-star iconos"></i>
+                    <i class="fas fa-star iconos"></i>
+                    <i class="fas fa-star iconos"></i>
+                    <i class="fas fa-star iconos"></i>
+                </div>
+                <h3>Juan Pérez</h3>
+                <b>Todo lo que buscas en un solo lugar</b>
+                <p>Excelente encontré lo que buscaba a un excelente precio y gran calidad, la atención ahí es muy buena.</p>
+            </div>
+            <div class="section__testimoniales-card">
+                <div class="estrellas">
+                    <i class="fas fa-star iconos"></i>
+                    <i class="fas fa-star iconos"></i>
+                    <i class="fas fa-star iconos"></i>
+                    <i class="fas fa-star iconos"></i>
+                    <i class="fas fa-star iconos"></i>
+                </div>
+                <h3>Carlos Torres</h3>
+                <b>En definitiva una gran tienda con un amplio surtido.</b>
+                <p>El personal que te atiende está bien capacitado y se esmeran por recomendarte lo que más se adecua a tus necesidades.</p>
+            </div>
+            <div class="section__testimoniales-card">
+                <div class="estrellas">
+                    <i class="fas fa-star iconos"></i>
+                    <i class="fas fa-star iconos"></i>
+                    <i class="fas fa-star iconos"></i>
+                    <i class="fas fa-star iconos"></i>
+                    <i class="fas fa-star iconos"></i>
+                </div>
+                <h3>Nicólas Sanchez</h3>
+                <b>Muy buena atención</b>
+                <p>Te atienden excelente, los trabajadores son muy atentos y serviciales.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section__contact">
+        <div class="section__contact-title">
+            <h2>Contactanos para más información!</h2>
+            <p>¿Tienes alguna duda?</p>
+            <p>Mandanos un mensaje desde este formulario al correo musicdlc@gmail.com o si lo prefieres al numero 8192816744</p>
+            <p>Horario de atención a cliente de Lunes a Sábado de 8:00 a.m. a 10 p.m.</p>
+            <p>Tiempo medio de respuesta 3-5 minutos</p>
+        </div>
+        <div class="section__contact-content">
+            <form method="POST" action="{% url 'contact' %}" id="contactoForm">
+                {% csrf_token %}
+                <h2>Contacto</h2>
+                {% if messages %}
+                    {% for message in messages %}
+                        <h3 class="mensaje__Success">{{ message }}</h3>
+                    {% endfor %}
+                {% endif %}
+                <input type="text" placeholder="Nombre" id="name" name="name" required>
+                <input type="email" placeholder="Correo Electrónico" id="email" name="email" required>
+                <input type="text" placeholder="Asunto" id="subject" name="subject" required>
+                <textarea id="message" placeholder="Mensaje" name="message" required></textarea>
+                <button type="submit">Enviar Mensaje</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="section__aviso">
+        <div class="section__aviso-content">
+            <h2>AVISO IMPORTANTE</h2>
+            <p>Debido a las inclemencias del tiempo algunas paqueterías y sistemas de envíos han retrasado sus tiempos de recolección y sus tiempos de entrega.</p>
+            <p>Lamentamos los inconvenientes y les pedimos que tomen sus precauciones.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const success = urlParams.get('success');
+
+            if (success === 'true') {
+                swal({
+                    title: '¡Compra exitosa!',
+                    text: 'Tu compra se ha realizado con éxito.',
+                    icon: 'success',
+                    button: 'Aceptar'
+                });
+            }
+        });
+    </script>
+
+{% endblock %}

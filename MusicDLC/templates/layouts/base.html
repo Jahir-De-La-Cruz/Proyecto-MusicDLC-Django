@@ -1,0 +1,179 @@
+<!-- Plantilla Principal para todas las páginas -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicDLC - {% block title %} Calidad en el Sonido {% endblock %}</title>
+
+    <!-- Recursos Locales -->
+     <link rel="shortcut icon" href="../../static/Img/logo_musicdlc.png" type="image/x-icon">
+    <link rel="stylesheet" href="../../static/Css/estilos.css?v1234567891234567891234">
+    <link rel="stylesheet" href="../../static/Css/forms.css?v12">
+    <link rel="stylesheet" href="../../static/Css/forms2.css?v1234">
+    <link rel="stylesheet" href="../../static/Css/carrito.css?v12">
+
+    <!-- Recursos Externos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+</head>
+<body>
+    
+    <div class="marquesina__container">
+        <marquee behavior="" direction="right">
+            <h3><b>• Envíos Gratis    • Hasta 3 meses sin intereses    • Descuento del 20% en todos los productos</b></h3>
+        </marquee>
+    </div>
+
+    <!-- Menu del Sitio Web -->
+    <header>
+        <div>
+            <a href="{% url 'home' %}">
+                <img src="../../static/Img/logo_musicdlc.png" alt="Logo de la Tienda" class="logo" width="100px" style="border-radius: 50%;">
+            </a>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{% url 'guitarras' %}">Guitarras</a></li>
+                <li><a href="{% url 'bajos' %}">Bajos</a></li>
+                <li><a href="{% url 'baterias' %}">Baterias</a></li>
+                <li><a href="{% url 'teclados' %}">Teclados</a></li>
+                <li><a href="{% url 'violines' %}">Violines</a></li>
+                <li><a href="{% url 'orquesta' %}">Orquesta</a></li>
+                <!-- Vistas que solamente vera un superusuario -->
+                {% if request.user.is_authenticated and request.user.is_superuser and request.user.is_staff %}
+                    <li><a href="{% url 'agregar_productos' %}">Agregar Producto</a></li>
+                    <li><a href="{% url 'agregar_marcas' %}">Agregar Marca</a></li>
+                    <li><a href="{% url 'agregar_categorias' %}">Agregar Categoria</a></li>
+                    <li><a href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a></li>
+                <!-- Vistas que vera un usuario normal -->
+                {% elif request.user.is_authenticated %}
+                    <li><a href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a></li>
+                {% else %}
+                    <li><a href="{% url 'iniciar_sesion' %}"><i class="fa-regular fa-user"></i></a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <div class="icons">
+            <div class="search-container">
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                <form method="GET" action="{% url 'buscar_productos' %}">
+                    <input type="text" name="q" placeholder="Buscar...">
+                </form>
+            </div>
+            <button><i class="fa-solid fa-cart-shopping carrito"></i></button>
+            <div class="cart-items-container">
+                <div class="cart-items">
+                    <h2>Carrito de Compras</h2>
+                    <table id="cart-items-table">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    </table>
+                    <p id="cart-total-price">Precio total: $0</p>
+                    <div class="botones">
+                        <button id="cart-button-buy" class="button1" type="button">Comprar</button>
+                        <button id="cart-button-clear" class="button2" type="button">Vaciar Carrito</button>
+                    </div>
+                </div>
+                <button class="cart-close-button" type="button"><i class="fa-solid fa-times"></i></button>
+            </div>
+        </div>    
+    </header>
+
+    <!-- Contenido del Resto de Páginas -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer del Sitio Web -->
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="{% url 'home' %}">
+                        <img src="../../static/Img/logo_musicdlc.png" alt="Logo de la Tienda" class="logo" style="height: 180px;">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>INFORMACIÓN</h2>
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Más Información</a>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2024 <b>Jahir De La Cruz</b> - Todos los Derechos Reservados</small>
+        </div>
+    </footer>
+
+    <!-- Recursos Locales -->
+    <script src="../../static/Js/forms.js"></script>
+    <script src="../../static/Js/carrito.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            var header = document.querySelector('header');
+            header.classList.toggle('abajo', window.scrollY > 0);
+        });        
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchContainer = document.querySelector('.search-container');
+            const searchButton = searchContainer.querySelector('button');
+            const searchInput = searchContainer.querySelector('input');
+
+            searchButton.addEventListener('click', function() {
+                searchContainer.classList.toggle('show');
+                if (searchContainer.classList.contains('show')) {
+                    searchInput.focus();
+                }
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!searchContainer.contains(event.target)) {
+                    searchContainer.classList.remove('show');
+                }
+            });
+        });
+    </script>
+    <script>
+        function toggleMenu() {
+            const header = document.querySelector('header');
+            header.classList.toggle('active');
+        }
+    </script>
+
+    <!-- Recursos Externos -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://kit.fontawesome.com/9249071b2d.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+</html>

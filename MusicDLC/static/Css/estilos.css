@@ -1,0 +1,700 @@
+/* Variables */
+:root {
+    --color1: #E3E2E0;
+    --color2: #B100CD;
+    --color3: #8901CF;
+    --color4: #B77ECA;
+    --color5: #000000;
+    --color6: #ffffff;
+    --color7: #FF0000;
+}    
+
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: var(--color1);
+}
+
+/* Marquee styles */
+.marquesina__container {
+    background-color: #B100CD;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px;
+    display: flex;
+}
+
+/* Header styles */
+header {
+    background-color: var(--color5);
+    color: var(--color3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    transition: 0.7s;
+    z-index: 1000; /* Aseguramos que el header esté sobre otros elementos */
+    position: relative;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    color: var(--color2);
+    cursor: pointer;
+}
+
+header.abajo {
+    background: var(--color3);
+    padding: 15px 20px;
+    top: 0; /* Cuando se hace scroll, el encabezado se mueve hacia arriba */
+}
+
+header div {
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header ul li {
+    list-style: none;
+}
+
+header ul li a {
+    font-family: helvetica;
+    margin: 0 10px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.7s;
+}
+
+header ul li a:hover {
+    text-decoration: underline;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.icons button {
+    background: none;
+    border: none;
+    color: #fff;
+    margin-left: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.search-container {
+    position: relative;
+    display: inline-block;
+}
+
+.search-container input {
+    display: none;
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease-in-out;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    border: none;
+    outline: none;
+}
+
+.search-container.show input {
+    display: block;
+}
+
+.search-container button {
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Section Info styles */
+.container {
+    min-height: 80vh;
+    background: linear-gradient(rgba(75, 75, 75, 0.2), rgba(46, 46, 46, 0.8)), url(../Img/portada.jpg) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+.container .container__content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 8rem;
+    text-align: center;
+}
+
+.container .container__content h1 {
+    font-size: 2.8rem;
+    color: var(--color1);
+    padding: 0 1rem;
+    text-shadow: 0 .3rem .5rem rgba(0, 0, 0, .3);
+    text-transform: uppercase;
+}
+
+.container .container__content p {
+    font-size: 1.2rem;
+    color: #fff;
+    padding: 1rem 25rem;
+}
+
+.container .container__content a {
+    background: var(--color2);
+    color: #fff;
+    cursor: pointer;
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+.container .container__content a:hover {
+    background-color: var(--color3);
+}
+
+/* Section information styles */
+.section__information {
+    margin: 40px 0;
+    /* background-color: var(--color4); */
+    padding: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.section__information-img img {
+    width: 300px;
+}
+
+.section__information-info {
+    margin: 0 20px;
+}
+
+.section__information-info h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: var(--color3);
+}
+
+.section__information-info p {
+    font-size: 22px;
+    text-align: justify;
+    color: var(--color5);
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Section instrumentos styles */
+.section__instrumentos {
+    margin: 40px 0;
+}
+
+.section__instrumentos-container {
+    margin: 0 50px;
+}
+
+.section__instrumentos-title h2 {
+    font-size: 30px;
+    color: var(--color3);
+    margin-bottom: 40px;
+}
+
+.section__instrumentos-cards {
+    margin: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.section__instrumentos-cards-card {
+    background-color: var(--color6);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 280px;
+    height: 420px;
+}
+
+.section__instrumentos-cards-card p:nth-child(2) {
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}
+
+.section__instrumentos-cards-card h2 {
+    font-size: 18px;
+    margin: 6px 0;
+}
+
+.section__instrumentos-cards-card p:nth-child(4) {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--color3);
+}
+
+.section__instrumentos-cards-card button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 6px 20px;
+    background-color: var(--color2);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.section__instrumentos-cards-card button:hover {
+    background-color: var(--color3);
+}
+
+/* Section services styles */
+.section__servicios {
+    text-align: center;
+    color: var(--color3);
+    margin: 100px 0;
+}
+
+.section__servicios h2 {
+    font-size: 30px;
+}
+
+.section__servicios-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.section__servicios-card {
+    height: 6rem;
+    width: 16rem;
+    background: #e0e0e0;
+    text-align: center;
+    margin: 2rem;
+}
+
+.section__servicios-card .iconos {
+    text-align: center;
+    /* color: var(--color3); */
+    font-size: 30px;
+    margin: 2rem 0;
+}
+
+.section__servicios-card h3 {
+    font-size: 20px;
+    /* color: var(--color2); */
+}
+
+.section__servicios-card p {
+    font-size: 16px;
+    padding: .7rem 2rem;
+    /* color: var(--color2); */
+}
+
+/* Section testimoniales style */
+.section__testimoniales {
+    margin: 50px;
+    background-color: var(--color3);
+    padding: 30px;
+    border-radius: 30px;
+}
+
+.section__testimoniales h2 {
+    color: var(--color1);
+    font-size: 26px;
+}
+
+.section__testimoniales-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.section__testimoniales-card {
+    width: 22rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    box-shadow: 0 .3rem 5rem rgba(0, 0, 0, .3);
+    background: #f5f5f5;
+    margin: 1rem;
+}
+
+.section__testimoniales-card h3 {
+    font-size: 22px;
+    color: var(--color3);
+    padding: 0 .5rem;
+    margin-bottom: 8px;
+}
+
+.section__testimoniales-card p {
+    font-size: 16px;
+    color: #000;
+    padding: 1.3rem .1rem;
+}
+
+.section__testimoniales-card .estrellas .iconos {
+    font-size: 22px;
+    color: #d6d308;
+    padding: 1.3rem .1rem;
+}
+
+/* Section contact styles */
+.section__contact {
+    margin: 50px 0;
+    background-color: var(--color2);
+    display: flex;
+    align-items: center;
+    padding: 40px 20px;
+    color: var(--color1);
+}
+
+.section__contact-title {
+    margin: 0 10px;
+}
+
+.section__contact-title h2 {
+    margin-bottom: 10px;
+    font-size: 26px;
+    color: var(--color6);
+}
+
+.section__contact-title p {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.section__contact-content {
+    margin: 0 30px;
+}
+
+.section__contact-content form {
+    background-color: var(--color6);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.section__contact-content form h2 {
+    font-size: 30px;
+    margin-bottom: 10px;
+    color: var(--color3);
+}
+
+.section__contact-content form input, textarea {
+    margin-bottom: 10px;
+    width: 500px;
+    padding: 6px;
+    outline: none;
+    resize: none;
+}
+
+.section__contact-content form button {
+    background-color: var(--color2);
+    border: none;
+    color: var(--color6);
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.section__contact-content form button:hover {
+    background-color: var(--color3);
+    color: var(--color1);
+}
+
+/* Section aviso styles */
+.section__aviso {
+    margin-top: 40px;
+}
+
+.section__aviso-content {
+    text-align: center;
+    margin: 0 60px;
+}
+
+.section__aviso-content h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--color7);
+}
+
+.section__aviso-content p {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Footer styles */
+.pie-pagina {
+    width: 100%;
+    background-color: var(--color5);
+    margin-top: 80px;
+}
+
+.pie-pagina .grupo-1 {
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 50px;
+    padding: 45px 0px;
+}
+
+.pie-pagina .grupo-1 .box figure {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pie-pagina .grupo-1 .box figure img {
+    width: 200px;
+}
+
+.pie-pagina .grupo-1 .box h2 {
+    color: #B100CD;
+    margin-bottom: 25px;
+    font-size: 20px;
+}
+
+.pie-pagina .grupo-1 .box a {
+    display: flex;
+    color: #c7c6c6;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.pie-pagina .grupo-1 .box a:hover {
+    text-decoration: underline;
+}
+
+.pie-pagina .grupo-1 .red-social a {
+    display: inline-block;
+    text-decoration: none;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    margin-right: 10px;
+    background-color: #0d2033;
+    text-align: center;
+    transition: all 300ms ease;
+}
+
+.pie-pagina .grupo-1 .red-social a:hover {
+    color: #B100CD;
+}
+
+.pie-pagina .grupo-2 {
+    background-color: #01060a;
+    padding: 15px 10px;
+    text-align: center;
+    color: #fff;
+}
+
+.pie-pagina .grupo-2 small {
+    font-size: 15px;
+}
+
+/* Media Queries */
+@media screen and (max-width: 1200px) {
+    .section__instrumentos-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .pie-pagina .grupo-1 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    header {
+        flex-direction: column;
+    }
+
+    header ul {
+        display: none;
+        background-color: var(--color5);
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 110px;
+        left: 0;
+        z-index: 1001;
+    }
+
+    header ul li {
+        margin: 10px 0;
+    }
+
+    header ul li a {
+        font-size: 14px;
+    }
+
+    header.active ul {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        font-size: 24px;
+        align-items: center;
+        margin-left: 10px;
+    }
+
+    nav, .icons {
+        margin-top: 10px;
+        justify-content: space-around;
+    }
+
+    .container .container__content p {
+        padding: 1rem 5rem;
+    }
+
+    .container .container__content a {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .section__information {
+        flex-direction: column;
+    }
+
+    .section__information-info p {
+        font-size: 18px;
+        padding: 1rem;
+    }
+
+    .section__instrumentos-container {
+        margin: 0 20px;
+    }    
+
+    .section__instrumentos-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section__testimoniales {
+        margin: 20px;
+    }
+
+    .section__contact-content form {
+        width: 380px;
+    }
+
+    .section__contact-content form input, textarea {
+        width: 100%;
+    }
+
+    .pie-pagina .grupo-1 {
+        width: 90%;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 30px;
+        padding: 35px 0px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    header ul {
+        flex-direction: column;
+    }
+
+    .marquesina__container {
+        font-size: 12px;
+        padding: 5px;
+    }
+
+    .container .container__content h1 {
+        font-size: 2rem;
+    }
+
+    .container .container__content p {
+        padding: 1rem;
+    }
+
+    .section__information-info h2 {
+        font-size: 24px;
+    }
+
+    .section__instrumentos-title h2,
+    .section__servicios h2,
+    .section__testimoniales h2,
+    .section__contact-title h2,
+    .section__aviso-content h2 {
+        font-size: 24px;
+    }
+
+    .section__information-info p,
+    .section__servicios-card h3,
+    .section__servicios-card p,
+    .section__testimoniales-card p,
+    .section__contact-title p,
+    .section__contact-content form input, textarea,
+    .section__aviso-content p {
+        font-size: 14px;
+    }
+
+    .section__instrumentos-cards-card {
+        max-width: 300px;
+        height: 430px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    header {
+        padding: 10px;
+    }
+
+    .section__instrumentos-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .section__contact {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,24 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+    <div class="section__instrumentos">
+        <div class="section__instrumentos-container">
+            <div class="section__instrumentos-title">
+                <h2>Equipos de Audio de gran calidad</h2>
+            </div>
+            <div class="section__instrumentos-cards">
+                {% for producto in productos %}
+                    <div class="section__instrumentos-cards-card" data-aos="fade-down" data-aos-duration="1000">
+                        <img src="{{ producto.imagen.url }}" alt="Imagen No disponible del Producto" class="productos__img">
+                        <p>{{ producto.marca }}</p>
+                        <h2 class="productos__titulo">{{ producto.nombre }}</h2>
+                        <p>${{ producto.precio|floatformat:2 }}MXN</p>
+                        <button class="añadir_al_carrito" data-product-id="{{ producto.id }}" data-product-price="{{ producto.precio }}">Añadir al Carrito</button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
