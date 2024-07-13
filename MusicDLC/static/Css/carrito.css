@@ -106,7 +106,7 @@
 @media (max-width: 400px) {
     /* Estilos para pantallas pequeñas */
     .cart-items-container {
-        width: 84%;
+        width: 88%;
         top: 110px;
         right: 5%;
         margin: 0;
@@ -117,13 +117,23 @@
         padding-right: 10px;
     }
 
+    #cart-items-table tr td {
+        font-size: 14px;
+    }
+
+    .cart-items-container .button1,
+    .cart-items-container .button2 {
+        padding: 10px;
+        font-size: 12px;
+    }
+
     .item-quantity {
         width: 40px;
     }
 
     .cart-close-button {
         top: 2px !important;
-        right: 2px !important;
+        right: 5px !important;
         font-size: 14px !important;
     }
 }

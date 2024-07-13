@@ -8,10 +8,10 @@
 
     <!-- Recursos Locales -->
      <link rel="shortcut icon" href="../../static/Img/logo_musicdlc.png" type="image/x-icon">
-    <link rel="stylesheet" href="../../static/Css/estilos.css?v1234567891234567891234">
+    <link rel="stylesheet" href="../../static/Css/estilos.css?v123456789123456789123456">
     <link rel="stylesheet" href="../../static/Css/forms.css?v12">
     <link rel="stylesheet" href="../../static/Css/forms2.css?v1234">
-    <link rel="stylesheet" href="../../static/Css/carrito.css?v12">
+    <link rel="stylesheet" href="../../static/Css/carrito.css?v1234">
 
     <!-- Recursos Externos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,10 +62,10 @@
         </nav>
         <div class="icons">
             <div class="search-container">
-                <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 <form method="GET" action="{% url 'buscar_productos' %}">
                     <input type="text" name="q" placeholder="Buscar...">
                 </form>
+                <button><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
             <button><i class="fa-solid fa-cart-shopping carrito"></i></button>
             <div class="cart-items-container">
@@ -139,30 +139,31 @@
         });        
     </script>
     <script>
+        function toggleMenu() {
+            const header = document.querySelector('header');
+            header.classList.toggle('active');
+        }
+    </script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchContainer = document.querySelector('.search-container');
             const searchButton = searchContainer.querySelector('button');
             const searchInput = searchContainer.querySelector('input');
-
-            searchButton.addEventListener('click', function() {
+    
+            searchButton.addEventListener('click', function(event) {
                 searchContainer.classList.toggle('show');
                 if (searchContainer.classList.contains('show')) {
                     searchInput.focus();
                 }
+                event.stopPropagation(); // Evita que el clic se propague al documento
             });
-
+    
             document.addEventListener('click', function(event) {
                 if (!searchContainer.contains(event.target)) {
                     searchContainer.classList.remove('show');
                 }
             });
         });
-    </script>
-    <script>
-        function toggleMenu() {
-            const header = document.querySelector('header');
-            header.classList.toggle('active');
-        }
     </script>
 
     <!-- Recursos Externos -->

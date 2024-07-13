@@ -108,25 +108,26 @@ header ul li a:hover {
 }
 
 .search-container {
+    display: flex;
+    align-items: center;
     position: relative;
-    display: inline-block;
 }
 
 .search-container input {
-    display: none;
-    width: 200px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    transition: all 0.3s ease-in-out;
+    width: 0;
+    opacity: 0;
+    transition: width 0.3s, opacity 0.3s;
     position: absolute;
     right: 0;
-    top: 100%;
-    border: none;
-    outline: none;
+    top: 0;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .search-container.show input {
-    display: block;
+    width: 300px; /* Ajusta el ancho según sea necesario */
+    opacity: 1;
+    position: static;
 }
 
 .search-container button {
@@ -688,6 +689,14 @@ header ul li a:hover {
 @media screen and (max-width: 400px) {
     header {
         padding: 10px;
+    }
+
+    .search-container {
+        z-index: 100;
+    }
+        
+    .search-container.show input {
+        width: 200px;
     }
 
     .section__instrumentos-cards {
